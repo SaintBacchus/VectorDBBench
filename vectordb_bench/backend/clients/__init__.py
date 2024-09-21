@@ -32,6 +32,8 @@ class DB(Enum):
     PgVectoRS = "PgVectoRS"
     PgVectorScale = "PgVectorScale"
     Redis = "Redis"
+    Lancedb = "Lancedb"
+    Lance = "Lance"
     MemoryDB = "MemoryDB"
     Chroma = "Chroma"
     AWSOpenSearch = "OpenSearch"
@@ -72,7 +74,7 @@ class DB(Enum):
         if self == DB.PgVectoRS:
             from .pgvecto_rs.pgvecto_rs import PgVectoRS
             return PgVectoRS
-        
+
         if self == DB.PgVectorScale:
             from .pgvectorscale.pgvectorscale import PgVectorScale
             return PgVectorScale
@@ -80,7 +82,14 @@ class DB(Enum):
         if self == DB.Redis:
             from .redis.redis import Redis
             return Redis
-        
+
+        if self == DB.Lancedb:
+            from .lancedb.lancedb import Lancedb
+            return Lancedb
+        if self == DB.Lance:
+            from .lance.lance import Lance
+            return Lance
+
         if self == DB.MemoryDB:
             from .memorydb.memorydb import MemoryDB
             return MemoryDB
@@ -135,7 +144,15 @@ class DB(Enum):
         if self == DB.Redis:
             from .redis.config import RedisConfig
             return RedisConfig
-        
+
+        if self == DB.Lancedb:
+            from .lancedb.lancedb import LancedbConfig
+            return LancedbConfig
+
+        if self == DB.Lance:
+            from .lance.lance import LanceConfig
+            return LanceConfig
+
         if self == DB.MemoryDB:
             from .memorydb.config import MemoryDBConfig
             return MemoryDBConfig
