@@ -49,7 +49,7 @@ class Lance(VectorDB):
     def optimize(self) -> None:
         ds = lance.dataset(self.url)
         ds.create_scalar_index('id', index_type='BTREE')
-        ds.create_index(column='vector', index_type='IVF_PQ', num_partitions=256, num_sub_vectors=96, replace=True)
+        ds.create_index(column='vector', index_type='IVF_PQ', num_partitions=256, num_sub_vectors=96, replace=True, metric='cosine')
         ds.optimize.compact_files()
         ds.optimize.optimize_indices()
         ds.cleanup_old_versions()

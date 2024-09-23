@@ -49,7 +49,7 @@ class Lancedb(VectorDB):
         db =  lancedb.connect(self.url)
         table = db.open_table(self.table_name)
         table.create_scalar_index('id')
-        table.create_index(vector_column_name='vector', num_partitions=256, num_sub_vectors=96)
+        table.create_index(vector_column_name='vector', metric = 'cosine', num_partitions=256, num_sub_vectors=96)
 
     @contextmanager
     def init(self) -> None:
@@ -106,9 +106,8 @@ class Lancedb(VectorDB):
         table = db.open_table(self.table_name)
         if filters:
             expr = f"{self._scalar_field} {filters.get('metadata')}"
-            print(expr)
             df = table.search(np.array(query).astype(np.float32)).nprobes(20).refine_factor(10).where(expr, prefilter=True).limit(k).select(["id"]).to_pandas()
             return df['id'].tolist()
         else:
-            df = table.search(np.array(query).astype(np.float32)).nprobes(20).refine_factor(10).where(prefilter=True).limit(k).select(["id"]).to_pandas()
+            df = table.search(np.array(query).astype(np.float32)).limit(k).nprobes(20).refine_factor(10).select(["id"]).to_pandas()
             return df['id'].tolist()
