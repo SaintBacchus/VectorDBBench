@@ -45,6 +45,8 @@ DB_TO_ICON = {
     DB.PgVector: "https://assets.zilliz.com/PG_Vector_d464f2ef5f.png",
     DB.PgVectoRS: "https://assets.zilliz.com/PG_Vector_d464f2ef5f.png",
     DB.Redis: "https://assets.zilliz.com/Redis_Cloud_74b8bfef39.png",
+    DB.Lancedb: "https://lancedb.com/images/lancedb-logo.svg",
+    DB.Lance: "https://lancedb.github.io/lance/_images/lance_logo.png",
     DB.Chroma: "https://assets.zilliz.com/chroma_ceb3f06ed7.png",
     DB.AWSOpenSearch: "https://assets.zilliz.com/opensearch_1eee37584e.jpeg",
 }

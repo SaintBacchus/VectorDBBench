@@ -2,6 +2,8 @@ from ..backend.clients.pgvector.cli import PgVectorHNSW
 from ..backend.clients.pgvecto_rs.cli import PgVectoRSHNSW, PgVectoRSIVFFlat
 from ..backend.clients.pgvectorscale.cli import PgVectorScaleDiskAnn
 from ..backend.clients.redis.cli import Redis
+from ..backend.clients.lancedb.cli import Lancedb
+from ..backend.clients.lance.cli import Lance
 from ..backend.clients.memorydb.cli import MemoryDB
 from ..backend.clients.test.cli import Test
 from ..backend.clients.weaviate_cloud.cli import Weaviate
@@ -15,6 +17,8 @@ cli.add_command(PgVectorHNSW)
 cli.add_command(PgVectoRSHNSW)
 cli.add_command(PgVectoRSIVFFlat)
 cli.add_command(Redis)
+cli.add_command(Lancedb)
+cli.add_command(Lance)
 cli.add_command(MemoryDB)
 cli.add_command(Weaviate)
 cli.add_command(Test)
